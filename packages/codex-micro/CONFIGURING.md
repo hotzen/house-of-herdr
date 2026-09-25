@@ -56,7 +56,9 @@ where `<binding>` is one of:
   always match Herdr's attention priority order).
 - `activateTerminalOnAgentFocus`: `false` by default. Set it to `true` to
   activate the terminal that launched Herdr before an Agent Key focuses its
-  assigned agent. The plugin reads its bundle ID from `__CFBundleIdentifier`.
+  assigned agent. This option works on macOS only. The plugin uses
+  `/usr/bin/osascript` (AppleScript) and the host bundle ID from
+  `__CFBundleIdentifier` to activate the terminal.
 - `scroll_steps`: wheel steps sent per dial detent, an integer from 1 to 12
   (default 1). Higher values cover more transcript per click. Config reloads
   live, so this is safe to tune while testing.
@@ -86,7 +88,9 @@ The six Agent Keys focus their assigned agents. They are not configurable.
 When terminal activation is enabled, macOS can switch to that terminal's
 fullscreen Space. Enable “When switching to an application, switch to a Space
 with open windows for the application” in System Settings > Desktop & Dock >
-Mission Control. `joystick` accepts `"pane-nav"` or per-direction overrides:
+Mission Control. The option uses AppleScript through `osascript`; this is a
+macOS-specific dependency. `joystick` accepts `"pane-nav"` or per-direction
+overrides:
 `{"up": <binding>, "down": ..., "left": ..., "right": ...}`; omitted
 directions keep pane navigation.
 
