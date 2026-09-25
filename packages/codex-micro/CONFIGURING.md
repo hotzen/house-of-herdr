@@ -85,14 +85,16 @@ where `<binding>` is one of:
 | `joystick`          | the stick                                                                                   | `"pane-nav"`              |
 
 The six Agent Keys focus their assigned agents. They are not configurable.
+`joystick` accepts `"pane-nav"` or per-direction overrides:
+`{"up": <binding>, "down": ..., "left": ..., "right": ...}`; omitted
+directions keep pane navigation.
+
+## Terminal activation
+
 When terminal activation is enabled, macOS can switch to that terminal's
 fullscreen Space. Enable “When switching to an application, switch to a Space
 with open windows for the application” in System Settings > Desktop & Dock >
-Mission Control. The option uses AppleScript through `osascript`; this is a
-macOS-specific dependency. `joystick` accepts `"pane-nav"` or per-direction
-overrides:
-`{"up": <binding>, "down": ..., "left": ..., "right": ...}`; omitted
-directions keep pane navigation.
+Mission Control. This option uses AppleScript through `osascript` on macOS.
 
 ## Binding kinds
 
