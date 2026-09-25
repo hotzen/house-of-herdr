@@ -32,6 +32,7 @@ overwrite it. Fix the reported error and the write succeeds.
 ```json
 {
   "policy": "sticky",
+  "activateTerminalOnAgentFocus": false,
   "scroll_steps": 1,
   "dial_mode_order": ["workspaces", "agents", "scroll"],
   "bindings": {
@@ -53,6 +54,9 @@ where `<binding>` is one of:
 
 - `policy`: `"sticky"` (agents keep their key; default) or `"mirror"` (keys
   always match Herdr's attention priority order).
+- `activateTerminalOnAgentFocus`: `false` by default. Set it to `true` to
+  activate the terminal that launched Herdr before an Agent Key focuses its
+  assigned agent. The plugin reads its bundle ID from `__CFBundleIdentifier`.
 - `scroll_steps`: wheel steps sent per dial detent, an integer from 1 to 12
   (default 1). Higher values cover more transcript per click. Config reloads
   live, so this is safe to tune while testing.
@@ -78,8 +82,11 @@ where `<binding>` is one of:
 | `ENC_CLK`           | dial click                                                                                  | `dial-mode`               |
 | `joystick`          | the stick                                                                                   | `"pane-nav"`              |
 
-The six Agent Keys always focus their assigned agents and are not
-configurable. `joystick` accepts `"pane-nav"` or per-direction overrides:
+The six Agent Keys focus their assigned agents. They are not configurable.
+When terminal activation is enabled, macOS can switch to that terminal's
+fullscreen Space. Enable “When switching to an application, switch to a Space
+with open windows for the application” in System Settings > Desktop & Dock >
+Mission Control. `joystick` accepts `"pane-nav"` or per-direction overrides:
 `{"up": <binding>, "down": ..., "left": ..., "right": ...}`; omitted
 directions keep pane navigation.
 
