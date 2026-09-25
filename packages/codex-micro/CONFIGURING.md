@@ -84,8 +84,8 @@ where `<binding>` is one of:
 | `ENC_CLK`           | dial click                                                                                  | `dial-mode`               |
 | `joystick`          | the stick                                                                                   | `"pane-nav"`              |
 
-The six Agent Keys focus their assigned agents. They are not configurable.
-`joystick` accepts `"pane-nav"` or per-direction overrides:
+The six Agent Keys always focus their assigned agents and are not
+configurable. `joystick` accepts `"pane-nav"` or per-direction overrides:
 `{"up": <binding>, "down": ..., "left": ..., "right": ...}`; omitted
 directions keep pane navigation.
 
